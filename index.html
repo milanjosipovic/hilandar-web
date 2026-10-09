@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hilandarski Tipik - Digital Archive</title>
+  <style>
+    :root {
+      --bg: #fbf9f5;
+      --text: #2c2a29;
+      --accent: #8c2d19;
+      --border: #e2dacd;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: Georgia, serif;
+      max-width: 720px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      line-height: 1.8;
+    }
+    h1 {
+      font-size: 2.2rem;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+    .meta {
+      font-style: italic;
+      color: #666;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    article p {
+      margin-bottom: 1.5rem;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 2rem 0;
+      padding-left: 1rem;
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Loading passage...</div>
+
+  <script>
+    function renderBlocks(blocks) {
+      return blocks.map(block => {
+        if (block.type === 'paragraph') {
+          const textContent = block.children.map(child => child.text).join('');
+          return `<p>${textContent}</p>`;
+        }
+        return '';
+      }).join('');
+    }
+
+    fetch('http://localhost:1337/api/typikon-passages')
+      .then(res => res.json())
+      .then(res => {
+        const entry = res.data[0];
+        const htmlContent = renderBlocks(entry.full_text);
+
+        document.getElementById('app').innerHTML = `
+          <h1>${entry.title}</h1>
+          <div class="meta">${entry.author} — ${entry.source}</div>
+          <article>${htmlContent}</article>
+          <blockquote>${entry.summary_note}</blockquote>
+        `;
+      })
+      .catch(err => {
+        document.getElementById('app').innerHTML = `<p style="color:red">Failed to load content: ${err.message}</p>`;
+      });
+  </script>
+</body>
+</html>
