@@ -10,32 +10,51 @@
       --text: #2c2a29;
       --accent: #8c2d19;
       --border: #e2dacd;
+      --muted: #666;
     }
     body {
       background-color: var(--bg);
       color: var(--text);
       font-family: Georgia, serif;
-      max-width: 720px;
+      max-width: 1100px;
       margin: 3rem auto;
       padding: 0 1.5rem;
       line-height: 1.8;
     }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
     h1 {
       font-size: 2.2rem;
       color: var(--accent);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.3rem;
     }
     .meta {
       font-style: italic;
-      color: #666;
+      color: var(--muted);
+    }
+    /* Parallel Dual-Column Grid */
+    .parallel-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    .column-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
       border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
     }
     article p {
       margin-bottom: 1.5rem;
       text-align: justify;
-      text-justify: inter-word;
     }
     blockquote {
       border-left: 3px solid var(--accent);
@@ -44,26 +63,47 @@
       font-style: italic;
       color: #555;
     }
+    @media (max-width: 768px) {
+      .parallel-container {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Poziv na monaški život</h1>
-  <div class="meta">Sveti Sava — Hilandarski tipik (Uvod)</div>
-  <article>
-      <p>“Ко љуби оца или матер више него мене, није мене достојан. Ко љуби </p>
-      <p>  жену или децу или њиве или имања више него мене, није мене достојан”.(4)</p>
-      <p>  Ово слушајући треба све остављати и за његовим заповестима ићи, “узимајући </p>
-      <p>  крст и последујући Христу и делом учити како се презиру телесне ствари, </p>
-      <p>  а како се брине за дело духовно, бесмртно. Ово је дело бесмртно”.(5) </p>
-      <p>  Они који га траже, иду за оним који је рекао:</p>
-      <p></p>
-      <p>  “Ходите к мени сви који се трудите и ја ћу вам дати мир, и узмите </p>
-      <p>  на се мој јарам, и научите се од мене, јер сам кротак и смеран </p>
-      <p>  срцем, и узмите образ мој на себе, јер јарам мој је благ и бреме </p>
-      <p>  је моје лако”.(6) И опет, називајући блаженима смерне духом и њима </p>
-      <p>  обећа да ће видети лице његово, а гладнима и жеднима обећа да ће се </p>
-      <p>  наситити, а онима који плачу обећа утеху бесконачну.(7)</p>
-  </article>
+  <header>
+    <h1>Poziv na monaški život</h1>
+    <div class="meta">Sveti Sava — Hilandarski tipik (Uvod)</div>
+  </header>
+
+  <main class="parallel-container">
+    <section>
+      <div class="column-title">Старословенски текст (Оригинал)</div>
+      <article><p>Ижє любнтъ отьца нлн матерь пачє мєнє, нѣстъ мєнє достюнъ. Ижє любнтъ жєнѫ нлн чѧда нлн сєла нлн стѣжаьнꙗ пачє мєнє, нѣстъ мєнє достюнъ.(4)</p>
+<p></p>
+<p>Сє слъıшащє довльньо єстъ всꙗ ѡставитн н за єго заповѣдьми ндѣтн, взємшє крьстъ н послѣдꙛщє Христꙛ н дѣломь ꙛчѧщє сѧ ѡбндѣтн плътсьскъıхъ, а ѡ дꙛшьнѣхъ пєщн сѧ дѣлѣхъ, бєзшьмрьтьнъıхъ. Снє бо єстъ дѣло бєзьсмрьтьно.(5)</p>
+<p></p>
+<p>Тражѧщнн жє єго, ндꙛть за рєкьшннмь: "Прнндѣтє къ мънѣ всн трꙛждащнн сѧ н ѡбрѣмєнєннн, н азъ ꙛпокоѩ вы, н възьмѣтє ꙗрьмо моє на сѧ, н наꙛчнтє сѧ ѡтъ мєнє, ꙗкѡ кротокъ єсмь н съмѣрєнъ срдьцємь, н възьмѣтє ѡбразъ мої на сѧ, ꙗкѡ ꙗрьмо моє благо н брѣмѧ моє льгько єстъ".(6) И пакъı, блажєны нацєкь съмѣрьныꙗ дꙛхомь н тѣмь ѡбѣща ꙗкѡ ꙛзьрꙗть лнцє єго, а алъчьнъıмь н жѧдьнъıмь ѡбѣща ꙗкѡ насытꙗть сѧ, а плачꙛщннмь сꙗ ꙛтѣхꙛ бєзьконьчьнѫ.(7)</p></article>
+    </section>
+
+    <section>
+      <div class="column-title">Савремени превод</div>
+      <article><p>“Ко љуби оца или матер више него мене, није мене достојан. Ко љуби </p>
+<p>  жену или децу или њиве или имања више него мене, није мене достојан”.(4)</p>
+<p>  Ово слушајући треба све остављати и за његовим заповестима ићи, “узимајући </p>
+<p>  крст и последујући Христу и делом учити како се презиру телесне ствари, </p>
+<p>  а како се брине за дело духовно, бесмртно. Ово је дело бесмртно”.(5) </p>
+<p>  Они који га траже, иду за оним који је рекао:</p>
+<p></p>
+<p>  “Ходите к мени сви који се трудите и ја ћу вам дати мир, и узмите </p>
+<p>  на се мој јарам, и научите се од мене, јер сам кротак и смеран </p>
+<p>  срцем, и узмите образ мој на себе, јер јарам мој је благ и бреме </p>
+<p>  је моје лако”.(6) И опет, називајући блаженима смерне духом и њима </p>
+<p>  обећа да ће видети лице његово, а гладнима и жеднима обећа да ће се </p>
+<p>  наситити, а онима који плачу обећа утеху бесконачну.(7)</p></article>
+    </section>
+  </main>
+
   <blockquote>Uvodni poziv Svetog Save na odricanje od svetovnih briga radi traženja 
   unutrašnjeg mira, smernosti i duhovnog (besmrtnog) dela.</blockquote>
 </body>
